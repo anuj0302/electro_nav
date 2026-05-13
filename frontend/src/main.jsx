@@ -1,0 +1,51 @@
+import React from "react";
+
+import ReactDOM from "react-dom/client";
+
+import { BrowserRouter } from "react-router-dom";
+
+import { Toaster } from "react-hot-toast";
+
+import "leaflet/dist/leaflet.css";
+
+import App from "./App";
+
+import {
+  ThemeProvider,
+} from "./context/ThemeContext";
+
+import {
+  AuthProvider,
+} from "./context/AuthContext";
+
+import "./styles/globals.css";
+
+ReactDOM.createRoot( 
+  document.getElementById("root")
+).render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <AuthProvider>
+        <ThemeProvider>
+          <Toaster
+            position="top-right"
+            toastOptions={{
+              style: {
+                background:
+                  "#111827",
+
+                color:
+                  "#F9FAFB",
+
+                border:
+                  "1px solid rgba(255,255,255,0.08)",
+              },
+            }}
+          />
+
+          <App />
+        </ThemeProvider>
+      </AuthProvider>
+    </BrowserRouter>
+  </React.StrictMode>
+);
